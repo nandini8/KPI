@@ -1,0 +1,31 @@
+<!--category.html-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Category</title>
+</head>
+<body>
+	{% if category %}
+	<h1>{{category.name}}</h1>
+		{% if page %}
+		<ul>
+		{% for p in page %}
+		<li>
+			<a href="{{p.url}}">{{p.title}}</a>
+		</li>
+		{% endfor %}
+		</ul>
+		{% else %}
+		<br>
+		No pages to display
+		{% endif %}
+	{% else %}
+	<br>
+	No categories to display
+	{% endif %}
+
+	<div>
+		<a href="/rango/">Rango </a>
+	</div>
+</body>
+</html>
