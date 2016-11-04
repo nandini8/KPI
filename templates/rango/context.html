@@ -1,31 +1,29 @@
-<!--category.html-->
+{% extends "rango/navigation_bar.html" %}
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
-<head>
-	<title>Category</title>
-</head>
+
 <body>
-	{% if category %}
-	<h1>{{category.name}}</h1>
-		{% if page %}
-		<ul>
-		{% for p in page %}
-		<li>
-			<a href="{{p.url}}">{{p.title}}</a>
-		</li>
-		{% endfor %}
-		</ul>
+	{% block body %}
+	<div class="row text-center"  style="background-color: #17ac9b">
+		{% if category %}
+		<h1>{{category.name}}</h1>
+			{% if page %}
+			{% for p in page %}
+				<span class="glyphicon glyphicon-chevron-right"></span><a href="{{p.url}}">{{p.title}}</a><br/>
+			{% endfor %}
+			{% else %}
+			<br>
+			No pages to display
+			{% endif %}
 		{% else %}
 		<br>
-		No pages to display
+		No categories to display
 		{% endif %}
-	{% else %}
-	<br>
-	No categories to display
-	{% endif %}
-
-	<div>
-		<a href="/rango/">Rango </a>
+		<div> 
+			<a href="/rango/" style="font-size: 28pt; color: #fff">Rango </a>
+		</div>
 	</div>
+	{% endblock %}
 </body>
 </html>

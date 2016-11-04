@@ -1,0 +1,19 @@
+<!--pages.html-->
+{% extends "rango/navigation_bar.html" %}
+<html>
+	<body>
+		{% block body %}
+			<div class="row text-center"  style="background-color: #17ac9b">
+			<h1>PAGES</h1>
+			{% if pages %}
+				<ul>
+					{% for x in pages %}
+						<span class="glyphicon glyphicon-chevron-right"></span><a href="{{x.url}}" style="color:#fff">{{x.title}}</a><br/>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			<a href="/rango/" style="color:#fff; font-size: 28pt">Rango</a><br/>
+			</div>
+		{% endblock %}
+	</body>
+</html>

@@ -1,55 +1,42 @@
 <!--index.html-->
+{% extends "rango/freelanceer.html" %}
 
 <!DOCTYPE html>
 {% load staticfiles %}
-
 <html>
-<head>
-	<title>Rango</title>
-</head>
 <body>
-	<div>
-		<h1>Rango says</h1>
-		<br/>hey there partner!<br/>
-		<img src="{% static "images/rango.jpg" %}" alt="Picture not found"/>
-	</div>
 
-	<div>
-		Most Liked Categories
-		{% if category %}
-		<ul>
-			{% for c in category %}
+		{% block category %}
+			{% if category %}
+			<ul>
+				{% for c in category %}
+				<li>
+					<a href="/rango/category/{{c.slug}}/" style="color:#fff">{{c.name}}</a>
+				</li>
+				{% endfor %}
+			</ul>
+			{% else %}
+			<br>
+			There are no categories to show
+			{% endif %}
+		{% endblock %}
+
+
+
+		{% block page %}
+		{% if page %}
+			<ul>
+				{% for p in page %}				
 			<li>
-				<a href="/rango/category/{{c.slug}}/">{{c.name}}</a>
+				<a href="{{p.url}}" style="color:#fff">{{p.title}}</a>
 			</li>
-			{% endfor %}
-		</ul>
+				{% endfor %}
+			</ul>
 		{% else %}
 		<br>
-		There are no categories to show
+		There are no pages to show
 		{% endif %}
-	</div>
+		{% endblock %}
 
-	<div>
-		Most Viewed Pages
-
-				{% if page %}
-					<ul>
-						{% for p in page %}				
-					<li>
-						<a href="{{p.url}}">{{p.title}}</a>
-					</li>
-						{% endfor %}
-					</ul>
-				{% else %}
-				<br>
-				There are no pages to show
-				{% endif %}
-	</div>
-
-	<div>
-		<a href='rango/about/'>About</a><br/>
-		<img src="{{ MEDIA_URL }}cat.jpg" alt="Image not found"/>
-	</div>
 </body>
 </html>

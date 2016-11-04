@@ -29,3 +29,15 @@ def show_category(request, category_slug_name):
 		context_dict['page'] = None
 
 	return render(request, 'rango/context.html', context_dict)
+
+def category(request):
+	category_list = Category.objects.order_by('likes')
+	context_dict = {"category": category_list, }
+	return render(request, "rango/category.html", context_dict)
+
+def page(request):
+		page_list = Page.objects.order_by('views')
+		context_dict = {'pages': page_list, }
+		return render(request, 'rango/pages.html', context_dict)
+
+

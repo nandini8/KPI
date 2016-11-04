@@ -1,0 +1,55 @@
+<!--index.html-->
+{% extends "rango/base_file.html" %}
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	{% block head %}
+		<meta charset="utf-8">
+		<meta  name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>My Website</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/custom1.css' %}">
+	{% endblock %}
+</head>
+
+
+<body>
+{% block header %}
+	<section class="row " id="Navigation">
+		<nav class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-custom affix-top" role="navigation">
+			<div class="container">
+					<div class="navbar-header">
+						<button type=button class="navbar-toggle" data-toggle="collapse" data-target="#collapse" style="border-color: #fff">
+						<span class="sr-only">Toggle navigation</span>
+						MENU
+						<span class="glyphicon glyphicon-menu-hamburger"></span>
+						</button>
+						<a href="/rango/" class="navbar-brand" style="margin-top: 20px"><font style="color:#fff; font-size:26pt;">START RANGO</font></a>
+					</div>
+					<div class="collapse navbar-collapse" id="collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li id="cat"><a href="#About" style="margin-top: 20px; color: #fff">CATEGORIES</a></li>
+							<li><a href="pages/" style="margin-top: 20px; color:#fff">PAGES</a></li>
+							<li><a href="#Footer1" style="margin-top: 20px; color:#fff">ABOUT</a></li>
+							<li><a href="#Contact" style="margin-top: 20px; color:#fff">CONTACT</a></li>
+							<li><a href="/admin/" style="margin-top: 20px; color:#fff">ADMIN</a></li>
+						</ul>
+
+					</div>
+			</div>
+		</nav>
+	</section>
+	{% endblock %}
+
+	{% block body %}
+	{% endblock %}
+
+	{% block javascript %}
+	<!--javascript-->
+	<script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+	{% endblock %}
+
+</body>
+</html>
