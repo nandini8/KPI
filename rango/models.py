@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils import timezone
+#updating for KPI project
 
 # Create your models here.
 
