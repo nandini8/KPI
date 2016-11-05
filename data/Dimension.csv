@@ -1,40 +1,40 @@
-DimId,Dimension,Level,DimName,ParentId
-1,Subject,0,Degree,0
-2,Subject,1,BCA,1
-3,Subject,1,BBA,1
-4,Subject,1,BCom,1
-5,Subject,2,Sem I,2
-6,Subject,2,Sem II,2
-7,Subject,2,Sem III,2
-8,Subject,2,Sem IV,2
-9,Subject,2,Sem V,2
-10,Subject,2,Sem VI,2
-11,Subject,3,Fundamentals Of Computer,5
-12,Subject,3,Problem Solving And C Programming,5
-13,Subject,3,Introduction To Internet And Html,5
-14,Subject,3,Basics Of Mathematics,5
-15,Subject,3,Advanced C Programming,6
-16,Subject,3,Dynamic Html And Xml,6
-17,Subject,3,Database Management System - I,6
-18,Subject,3,Mathematical Foundation Of Computer Science,6
-19,Subject,3,Computer Organization & Advanced Microprocessor,7
-20,Subject,3,Data Structures,7
-21,Subject,3,Object Oriented Concepts And Programming,7
-22,Subject,3,Fundamentals Of Operating System,7
-23,Subject,3,Statistical Computing,7
-24,Subject,2,Sem I,3
-25,Subject,2,Sem II,3
-26,Subject,2,Sem III,3
-27,Subject,2,Sem IV,3
-28,Subject,2,Sem V,3
-29,Subject,2,Sem VI,3
-30,Subject,3,Principles Of Management - I,24
-31,Subject,3,Financial Accounting,24
-32,Subject,3,Forms Of Business Organization,24
-33,Subject,3,Principles Of Economics (Micro),24
-34,Subject,3,IT Tools And Applications,24
-35,Subject,3,General English,24
-36,Subject,3,Basic Mathematics,24
-37,Subject,3,Communication Skills,25
-38,Subject,3,Practical Studies,25
-39,Subject,3,Health Education,25
+DimId,Dimension,Level,DimName,ParentId,CopyDimId
+1,Subject,0,Degree,-1,1
+2,Subject,1,BCA,1,2
+3,Subject,1,BBA,1,3
+4,Subject,1,BCom,1,4
+5,Subject,2,Sem I,2,5
+6,Subject,2,Sem II,2,6
+7,Subject,2,Sem III,2,7
+8,Subject,2,Sem IV,2,8
+9,Subject,2,Sem V,2,9
+10,Subject,2,Sem VI,2,10
+11,Subject,3,Fundamentals Of Computer,5,11
+12,Subject,3,Problem Solving And C Programming,5,12
+13,Subject,3,Introduction To Internet And Html,5,13
+14,Subject,3,Basics Of Mathematics,5,14
+15,Subject,3,Advanced C Programming,6,15
+16,Subject,3,Dynamic Html And Xml,6,16
+17,Subject,3,Database Management System - I,6,17
+18,Subject,3,Mathematical Foundation Of Computer Science,6,18
+19,Subject,3,Computer Organization & Advanced Microprocessor ,7,19
+20,Subject,3,Data Structures ,7,20
+21,Subject,3,Object Oriented Concepts And Programming,7,21
+22,Subject,3,Fundamentals Of Operating System ,7,22
+23,Subject,3,Statistical Computing,7,23
+24,Subject,2,Sem I,3,24
+25,Subject,2,Sem II,3,25
+26,Subject,2,Sem III,3,26
+27,Subject,2,Sem IV,3,27
+28,Subject,2,Sem V,3,28
+29,Subject,2,Sem VI,3,29
+30,Subject,3,Principles Of Management - I,24,30
+31,Subject,3,Financial Accounting,24,31
+32,Subject,3,Forms Of Business Organization,24,32
+33,Subject,3,Principles Of Economics (Micro),24,33
+34,Subject,3,IT Tools And Applications,24,34
+35,Subject,3,General English,24,35
+36,Subject,3,Basic Mathematics,24,36
+37,Subject,3,Communication Skills ,25,37
+38,Subject,3,Practical Studies ,25,38
+39,Subject,3,Health Education ,25,39
