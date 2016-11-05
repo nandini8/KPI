@@ -2,7 +2,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils import timezone
 #updating for KPI project
-
+#Thank you for you comment
 # Create your models here.
 
 class Category(models.Model):
