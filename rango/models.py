@@ -39,24 +39,6 @@ class Metrics(models.Model):
 
 	def __str__(self):
 		return self.metric_name
-	
-
-class MetricData(models.Model):
-	dim_1 = models.CharField(max_length=50)
-	dim_2 = models.CharField(max_length=50)
-	dim_3 = models.CharField(max_length=50)
-	attr_1 = models.CharField(max_length=50)
-	attr_2 = models.CharField(max_length=50)
-	attr_3 = models.CharField(max_length=50)
-	date_associated = models.DateField()
-	metric_id = models.ForeignKey(Metrics)
-	numerator = models.IntegerField()
-	denominator = models.IntegerField()
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
-	row_status = models.IntegerField(blank=False)
-	loaded_by = models.CharField(max_length=50)
-
 
 class Dimension(models.Model):
 	dimension = models.CharField(max_length=50)
@@ -68,6 +50,24 @@ class Dimension(models.Model):
 
 	def __str__(self):
 		return self.dimension
+	
+
+class MetricData(models.Model):
+	dim_1 = models.ForeignKey(Dimension)
+	#dim_2 = models.ForeignKey(Dimension)
+	#dim_3 = models.ForeignKey(Dimension)
+	attr_1 = models.CharField(max_length=50)
+	attr_2 = models.CharField(max_length=50)
+	attr_3 = models.CharField(max_length=50)
+	date_associated = models.DateField()
+	metric_id = models.ForeignKey(Metrics)
+	numerator = models.IntegerField()
+	denominator = models.IntegerField()
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
+	row_status = models.IntegerField(blank=False, default=True)
+	loaded_by = models.CharField(max_length=50)
+
 
 
 
