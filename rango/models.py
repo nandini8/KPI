@@ -68,6 +68,9 @@ class MetricData(models.Model):
 	row_status = models.IntegerField(blank=False, default=True)
 	loaded_by = models.CharField(max_length=50)
 
+	def __str__(self):
+		return self.attr_1
+
 
 
 

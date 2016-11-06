@@ -1,20 +1,45 @@
 import os, django, datetime
+from django.db.models import Sum, Count
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.settings' )
 django.setup()
 
 from rango.models import MetricData, Dimension
 
 def AllStudentsAllExams():
-	print("Num \t","Student \t","Sem \t\t","Subject \t","Exam_type \t","Marks \t","Max \t","Percentage")
-	m = MetricData.objects.get(id=1)
-	parent=m.dim_1.parent_id
-	sem = Dimension.objects.get(id=parent)
-	print(m.id,"\t",m.attr_1,"\t",sem.dim_name,"\t",m.dim_1.dim_name,"\t",m.attr_2,"\t",m.numerator,"\t",m.denominator,"\t",
-		(m.numerator * 100) / m.denominator)
+
+	print('{:>4} {:<15} {:<10} {:<10} {:<10} {:>10} {:>10} {:>15}'.format("Num","Student","Sem","Subject",
+		"Exam_type","Marks","Max","Percentage"))
+
+	metric_obj = MetricData.objects.all()
+	for m in metric_obj:
+		parent_obj = m.dim_1.parent
+		subject =  ''.join(x[0] for x in m.dim_1.dim_name.split())				#creating abbreviations for subjects
+
+		print('{:>4} {:<15} {:<10} {:<10} {:<10} {:>10} {:>10} {:15.2f}'.format(m.id, m.attr_1, parent_obj.dim_name, subject, m.attr_2, m.numerator
+			,m.denominator,(m.numerator * 100) / m.denominator))
 
 
 def AllStudentsAllSubjects():
-	print("Num \t","Student \t","Sem \t","Subject \t","Marks \t","Max \t","Percentage")
+	'''
+	print('{:>4} {:<15} {:<10} {:<10} {:>10} {:>10} {:>15}'.format("Num","Student","Sem","Subject","Marks","Max","Percentage"))
+
+
+	metric_obj = MetricData.objects.values('attr_1').extra(select={'id', }).annotate(numerator=Sum('numerator'))
+	print(metric_obj)
+
+	#m_obj = MetricData.objects.values('attr_1','attr_2').annotate(denominator=Sum('denominator'))
+	#print(m_obj)
+
+	
+	for m in metric_obj:
+		print(m['attr_1'])
+		subject =  ''.join(x[0] for x in m.dim_1.dim_name.split())				#creating abbreviations for subjects
+	'''
+
+
+
+		#print('{:>4} {:<15} {:<10} {:<10} {:<10} {:>10} {:>10} {:15.2f}'.format(m.id, m.attr_1, parent_obj.dim_name, subject, m.attr_2, m.numerator
+		#	,m.denominator,(m.numerator * 100) / m.denominator))
 
 
 
@@ -26,6 +51,13 @@ def AllStudentsAllSems():
 
 def AllStudents():
 	print("Num \t","Student \t","Marks \t","Max \t","Percentage")
+	m_list = MetricData.objects.raw('SELECT id, attr_1, sum(numerator), sum(denominator),sum(numerator) * 100 / sum(denominator) GROUP BY attr_1')
+	print(m_list)
+
+	#for m in m_list:
+	#	print(m)
+
+
 
 
 def AllSubjectsAllExams():
@@ -42,4 +74,6 @@ def AllSems():
 
 
 if __name__ == '__main__':
-	AllStudentsAllExams()
+	#AllStudentsAllExams()
+	#AllStudentsAllSubjects()
+	AllStudents()

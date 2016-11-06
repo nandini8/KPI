@@ -21,15 +21,15 @@ def populate():
 
 	metric_obj = Metrics.objects.get(id=1)
 
-
-	semesters = Dimension.objects.filter(parent_id=2)
+	bca_obj = Dimension.objects.filter(dim_name='BCA')[0]
+	semesters = Dimension.objects.filter(parent=bca_obj)
 	sem_index = 0
 
 	for sem in semesters:
 		print(sem.dim_name)
 		exam_year = semester[sem.dim_name]
 		print(exam_year)
-		subjects = Dimension.objects.filter(parent_id=sem.id)
+		subjects = Dimension.objects.filter(parent=sem)
 		sem_index += 1
 		exam_day = 0
 
@@ -48,7 +48,7 @@ def populate():
 				for student in students_list:
 					#print("\t\t\t", student['StudentName'])
 					num = random.randrange(min1, max1)
-
+					
 					m = MetricData.objects.get_or_create(dim_1=subject, attr_1=student['StudentName'],
 						attr_2= exam_type,
 						date_associated=exam_date, metric_id=metric_obj,
