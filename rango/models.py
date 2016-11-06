@@ -41,15 +41,15 @@ class Metrics(models.Model):
 		return self.metric_name
 
 class Dimension(models.Model):
-	dimension = models.CharField(max_length=50)
+	dim_type = models.CharField(max_length=50)
 	level = models.IntegerField(blank=False)
 	dim_name = models.CharField(max_length=50)
-	parent_id = models.IntegerField(blank=False)
+	parent = models.ForeignKey('self', null=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
-		return self.dimension
+		return self.dim_name
 	
 
 class MetricData(models.Model):
