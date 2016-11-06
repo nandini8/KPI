@@ -20,7 +20,7 @@ def AllStudentsAllExams():
 
 
 def AllStudentsAllSubjects():
-	'''
+	
 	print('{:>4} {:<15} {:<10} {:<10} {:>10} {:>10} {:>15}'.format("Num","Student","Sem","Subject","Marks","Max","Percentage"))
 
 
@@ -34,7 +34,7 @@ def AllStudentsAllSubjects():
 	for m in metric_obj:
 		print(m['attr_1'])
 		subject =  ''.join(x[0] for x in m.dim_1.dim_name.split())				#creating abbreviations for subjects
-	'''
+	
 
 
 
@@ -50,12 +50,11 @@ def AllStudentsAllSems():
 
 
 def AllStudents():
-	print("Num \t","Student \t","Marks \t","Max \t","Percentage")
-	m_list = MetricData.objects.raw('SELECT id, attr_1, sum(numerator), sum(denominator),sum(numerator) * 100 / sum(denominator) GROUP BY attr_1')
-	print(m_list)
-
-	#for m in m_list:
-	#	print(m)
+	print('{:>4} {:<15} {:>10} {:>10} {:>15}'.format("Num","Student","Marks","Max","Percentage"))
+	m_list = MetricData.objects.raw('SELECT id, attr_1, Sum(numerator) as numerator, Sum(denominator) as denominator,Sum(numerator) * 100 / Sum(denominator) as percentage from rango_metricdata GROUP BY attr_1')
+	for m in m_list:
+		print('{:>4} {:<15} {:>10} {:>10} {:>15}'.format(m.id,m.attr_1,m.numerator,m.denominator,m.p))
+		
 
 
 
