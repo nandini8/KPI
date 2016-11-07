@@ -1,6 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
-from rango.models import Category, Page
+from rango.models import Category, Page, MetricData, Metrics, Dimension
+from graphos.sources.model import ModelDataSource
+from graphos.renderers import gchart
+import ExamReports
+import json
+
+
 
 def index(request):
 	category_list = Category.objects.order_by('-likes')[:5]
@@ -39,5 +45,15 @@ def page(request):
 		page_list = Page.objects.order_by('views')
 		context_dict = {'pages': page_list, }
 		return render(request, 'rango/pages.html', context_dict)
+
+def chart(request):
+	list_dict = ExamReports.AllSubjectsForStudent('Angel')
+
+	#context_dict = {'list' : list_dict}
+	#return render(request, 'rango/chart.html', context_dict)
+
+	js_data = json.dumps(list_dict)
+	return render_to_response('rango/chart.html', {'list': js_data})
+
 
 

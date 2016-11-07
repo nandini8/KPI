@@ -94,6 +94,7 @@ def AllSubjectsForStudent(student_name):
 	practical_list = MetricData.objects.raw('select id, dim_1_id, numerator, denominator from rango_metricdata where attr_1 = "'+student_name+'" and attr_2 = "Practical" group by dim_1_id')
 
 	id = 0
+	list_dict =[]
 	for o, w, p in zip(oral_list, written_list, practical_list):
 		id += 1
 		dim = Dimension.objects.get(id=o.dim_1_id)
@@ -103,7 +104,12 @@ def AllSubjectsForStudent(student_name):
 		perc_prac = p.numerator * 100 / p.denominator
 		perc_written = w.numerator * 100 / w.denominator
 		total = (o.numerator + p.numerator + w.numerator) * 100 / (o.denominator+p.denominator+w.denominator)
-		print('{:>4} {:<15} {:<10} {:<10} {:9.2f}% {:9.2f}% {:9.2f}%'.format(id, dim1.dim_name, subject , perc_oral , perc_prac, perc_written, total))
+
+		list_dict.append({'id': id, 'sem': dim1.dim_name, 'subject': subject, 'Oral': perc_oral, 'Written': perc_written, 'Practical': perc_prac, 'total': total})
+		#print('{:>4} {:<15} {:<10} {:<10} {:9.2f}% {:9.2f}% {:9.2f}%'.format(id, dim1.dim_name, subject , perc_oral , perc_prac, perc_written, total))
+	#for l in list_dict:
+	#	print(l)
+	return(list_dict) 
 
 
 
@@ -115,4 +121,5 @@ if __name__ == '__main__':
 	#AllSubjectsAllExams()
 	#AllSubjects()
 	#AllSems()
-	AllSubjectsForStudent(input('Enter name of the student: '))
+	student_name = input('Enter name of the student: ')
+	l =	AllSubjectsForStudent(student_name)
