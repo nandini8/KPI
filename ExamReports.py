@@ -1,4 +1,4 @@
-import os, django, datetime
+import os, django, datetime, collections
 from django.db.models import Sum, Count
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.settings' )
 django.setup()
@@ -6,21 +6,25 @@ django.setup()
 from rango.models import MetricData, Dimension
 
 def AllStudentsAllExams():
-
+	AllSubjectsAllExams_list = list()
+	d=dict()
 	print('{:>4} {:<15} {:<10} {:<10} {:<10} {:>10} {:>10} {:>15}'.format("Num","Student","Sem","Subject",
 		"Exam_type","Marks","Max","Percentage"))
-
+	id = 0
 	metric_obj = MetricData.objects.all()
 	for m in metric_obj:
 		parent_obj = m.dim_1.parent
 		subject =  ''.join(x[0] for x in m.dim_1.dim_name.split())				#creating abbreviations for subjects
-
-		print('{:>4} {:<15} {:<10} {:<10} {:<10} {:>10} {:>10} {:15.2f}'.format(m.id, m.attr_1, parent_obj.dim_name, subject, m.attr_2, m.numerator
-			,m.denominator,(m.numerator * 100) / m.denominator))
+		id = id + 1
+		#print('{:>4} {:<15} {:<10} {:<10} {:<10} {:>10} {:>10} {:15.2f}'.format(m.id, m.attr_1, parent_obj.dim_name, subject, m.attr_2, m.numerator
+		#	,m.denominator,(m.numerator * 100) / m.denominator))
+		d = {'attr_1' : m.attr_1, 'parent' : parent_obj.dim_name, 'subject' : subject, 'attr_2': m.attr_2, 'numerator' :m.numerator,
+		'denominator': m.denominator, 'percentage':float((m.numerator * 100) / m.denominator)}	
+		AllSubjectsAllExams_list.append(d)
 
 
 def AllStudentsAllSubjects():
-	
+	AllStudentsAllSubjects_list = list()
 	print('{:>4} {:<15} {:<10} {:<10} {:>10} {:>10} {:>15}'.format("Num","Student","Sem","Subject","Marks","Max","Percentage"))
 	m_list = MetricData.objects.raw('Select id, dim_1_id, Sum(numerator) as numerator, attr_1, sum(denominator) as denominator from rango_metricdata group by attr_1, dim_1_id ')
 	id = 0
@@ -30,7 +34,9 @@ def AllStudentsAllSubjects():
 		dim1 = Dimension.objects.get(id = dim.parent.id)
 		subject =  ''.join(x[0] for x in dim.dim_name.split())
 		print('{:>4} {:<15} {:<10} {:<10} {:>10} {:>10} {:13.2f}'.format(id,m.attr_1, dim1.dim_name, subject,m.numerator,m.denominator, m.numerator * 100 / m.denominator))
-
+		d = {'attr_1' : m.attr_1,'sem' : dim1.dim_name, 'subject' : subject, 'numerator' :m.numerator,
+		'denominator': m.denominator, 'percentage':float((m.numerator * 100) / m.denominator)}
+		AllStudentsAllSubjects_list.append(d)
 
 
 def AllStudentsAllSems():
@@ -77,11 +83,11 @@ def AllSems():
 
 	sem_list = Dimension.objects.raw('select id from rango_dimension where id in (select parent_id from rango_dimension where id in (select dim_1_id from rango_metricdata group by dim_1_id))')
 	for sem in sem_list:
-		m_list = MetricData.objects.raw('select  id, sum(numerator) as numerator , sum(denominator) as denominator from rango_metricdata where dim_1_id in (select id from rango_dimension where parent_id =' + str(sem.id) + ')')
+		m_list = MetricData.objects.raw('select  id, sum(numerator) as numerator , sum(denominator) as denominator,sum(numerator) * 100 / sum(denominator) as percentage from rango_metricdata where dim_1_id in (select id from rango_dimension where parent_id =' + str(sem.id) + ')')
 		id = 0
 		for m in m_list:
 			id += 1
-			print('{:>4} {:<15} {:>10} {:>15} {:13.2f}'.format(id, sem.dim_name, m.numerator, m.denominator , m.numerator * 100 / m.denominator))
+			print('{:>4} {:<15} {:>10} {:>15} {:13.2f}'.format(id, sem.dim_name, m.numerator, m.denominator , m.percentage))
 
 
 
@@ -109,10 +115,10 @@ def AllSubjectsForStudent(student_name):
 
 
 if __name__ == '__main__':
-	#AllStudentsAllExams()
+	AllStudentsAllExams()
 	#AllStudentsAllSubjects()
 	#AllStudents()
 	#AllSubjectsAllExams()
 	#AllSubjects()
 	#AllSems()
-	AllSubjectsForStudent(input('Enter name of the student: '))
+	#AllSubjectsForStudent(input('Enter name of the student: '))

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rango.models import Category, Page
 
+
 def index(request):
 	category_list = Category.objects.order_by('-likes')[:5]
 	page_list = Page.objects.order_by('-views')[:5]
@@ -39,5 +40,4 @@ def page(request):
 		page_list = Page.objects.order_by('views')
 		context_dict = {'pages': page_list, }
 		return render(request, 'rango/pages.html', context_dict)
-
 
