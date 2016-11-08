@@ -1,0 +1,51 @@
+<!--chart.html-->
+
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var django_data = {{list|safe}};
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Subject');
+      data.addColumn('number', django_data[1].attr_1);
+      data.addColumn('number', django_data[2].attr_1);
+      
+
+      for ( var i= 0; i < django_data.length; i++)
+        {
+          data.addRows([
+            [django_data[i].subject,parseInt(django_data[i].percentage),parseInt(django_data[i].percentage)]
+            ]);
+        }
+
+     
+
+      var options = {
+        chart: {
+          title: 'All Studenst Subject wise Marks',
+          subtitle: 'in millions of dollars (USD)'
+        },
+        width: 900,
+        height: 500
+      };
+
+      var chart = new google.charts.Line(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>

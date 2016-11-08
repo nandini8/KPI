@@ -8,4 +8,5 @@ urlpatterns = [
 	url(r'^category/(?P<category_slug_name>[\w\-]+)/$', views.show_category, name='show_category'),
 	url(r'^categories/', views.category, name="category"),
 	url(r'^pages/', views.page, name="page"),
+	url(r'charts/', views.chart, name="AllstudentsAllSubjects")
 ]
