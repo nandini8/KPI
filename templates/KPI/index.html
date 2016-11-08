@@ -1,0 +1,220 @@
+{% load staticfiles %}
+
+<!--02_02.html
+creating grids -->
+<!DOCTYPE html>
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+<html>
+	<head>
+		<title>
+			KPI
+		</title>
+		<meta charset="utf-8">
+		<meta  name="viewport" content="width=device-width, initial-scale=1.0">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="{% static 'KPI/css/KPI.css' %}">
+		
+		<div class="container">
+			<div class="panel panel-primary">
+			  <div class="panel-heading ">
+			  	<div class="col-md-6 " >
+					<h4>Key Performance Indicator</h4>
+				</div>
+				<div class="col-md-6 text-right">
+					<h4 >Status Indicator</h4>
+				</div>
+
+			  </div>
+		</div>
+
+
+	</head>
+	<body>
+<div class="container">
+		<div class="panel panel-primary">
+		  <div class="panel-heading ">
+		  	<div class="col-md-12">
+				<ul class="nav nav-tabs">
+				  <li role="presentation" class="active"><a href="">Executive Summary</a></li>
+				  <li role="presentation"><a href="">Annual Key Metrics</a></li>
+				  <li role="presentation"><a href="">Semester Specific</a></li>
+				  <li role="presentation"><a href="">Student Specific</a></li>
+				</ul>
+			</div>
+		  </div>
+		  <div class="panel-body">
+		  	<div class="row container" id="text">
+				<div class="col-md-2">Degree</div>
+				<div class="col-md-2">Semester</div>
+				<div class="col-md-2">Subject</div>
+				<div class="col-md-2">Year</div>
+				<div class="col-md-2">Month</div>
+			</div>
+			<div class="row container" id="combo">
+				
+				  <div class="col-md-2">
+					  <div class="dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    SELECT
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						    <li><a href="#">Action</a></li>
+						    <li><a href="#">Another action</a></li>
+						    <li><a href="#">Something else here</a></li>
+						    <li role="separator" class="divider"></li>
+						    <li><a href="#">Separated link</a></li>
+						  </ul>
+					  </div>
+				  </div>
+				  <div class="col-md-2">
+				  	<div class="dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    SELECT
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						    <li><a href="#">Action</a></li>
+						    <li><a href="#">Another action</a></li>
+						    <li><a href="#">Something else here</a></li>
+						    <li role="separator" class="divider"></li>
+						    <li><a href="#">Separated link</a></li>
+						  </ul>
+					  </div>
+				  </div>
+				  <div class="col-md-2">
+				  	<div class="dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    SELECT
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						    <li><a href="#">Action</a></li>
+						    <li><a href="#">Another action</a></li>
+						    <li><a href="#">Something else here</a></li>
+						    <li role="separator" class="divider"></li>
+						    <li><a href="#">Separated link</a></li>
+						  </ul>
+					  </div>
+				  </div>
+				  <div class="col-md-2">
+				  	<div class="dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						   SELECT
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						    <li><a href="#">Action</a></li>
+						    <li><a href="#">Another action</a></li>
+						    <li><a href="#">Something else here</a></li>
+						    <li role="separator" class="divider"></li>
+						    <li><a href="#">Separated link</a></li>
+						  </ul>
+					  </div>
+				  </div>
+				  <div class="col-md-2">
+				  	<div class="dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    SELECT
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						    <li><a href="#">Action</a></li>
+						    <li><a href="#">Another action</a></li>
+						    <li><a href="#">Something else here</a></li>
+						    <li role="separator" class="divider"></li>
+						    <li><a href="#">Separated link</a></li>
+						  </ul>
+					  </div>
+				  </div>
+				  <div class="col-md-2">
+				  	<a href="#" id = "applybtn" class="btn btn-primary">Apply</a>
+				  </div>
+
+			</div>
+		   
+		  </div>
+		   <div class="panel-footer"></div>
+		</div>
+</div>
+			
+<div class="container">
+	 <section id="footer">
+		<div class="row text-center">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+				<div class="panel panel-primary">
+					<div class="panel panel-heading"><b>Batch Acceptance Rate</b></div>
+					<div class="panel panel-body table-responsive">
+						<table class="table table-default table-hover table-default table-striped">
+							<th></th>
+							<th>Biologics DS</th>
+							<th>Bioogics DP</th>
+							<th>Small Molecules DS</th>
+							<th>Small Molecules DP</th>
+							<th>Combined</th>
+							
+								<tr>
+									<td><b>Released Loads</b></td>
+									<td>515</td>
+									<td>9133</td>
+									<td>681</td>
+									<td>4430</td>
+									<td>14759</td>
+								</tr>
+
+								<tr>
+									<td><b>Total Loads</b></td>
+									<td>522</td>
+									<td>9159</td>
+									<td>685</td>
+									<td>4439</td>
+									<td>14805</td>
+								</tr>
+							
+							
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+				<div class="panel panel-primary">
+					<div class="panel panel-heading"><b>Internal Audits</b></div>
+					<div class="panel panel-body table-responsive">
+						<table class=" table table-hover table-default table-striped">
+							<th>For Cause</th>
+							<th>Critical Observation</th>
+							<th>Major Observation</th>
+							<th>Minor Observation</th>
+							<th>Number of Audits</th>
+
+								<tr>
+									<td>1</td>
+									<td>2</td>
+									<td>182</td>
+									<td>190</td>
+									<td>49</td>
+								</tr>
+
+						</table>
+					</div>
+			</div>
+			
+		</div>
+	</section>
+<div class="container">
+		<script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	</body>	
+</html>

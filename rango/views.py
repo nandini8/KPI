@@ -10,12 +10,8 @@ import json
 
 
 def index(request):
-	category_list = Category.objects.order_by('-likes')[:5]
-	page_list = Page.objects.order_by('-views')[:5]
 
-	context_dict = {'category': category_list, 'page': page_list }
-
-	return render(request, 'rango/index.html', context_dict)
+	return render(request, 'KPI/index.html')
 
 def about(request):
 	context_dict = {'your_name': "NANDINI"}

@@ -1,0 +1,36 @@
+body {
+	padding-top: 10px;
+}
+
+a {
+	color: white;
+}
+.panel-heading{
+	height: 65px;
+	background-color: #0A289F;
+}
+.panel-footer{
+	height: 25px;
+	background-color: #1A6D92;
+}
+.panel > .table-responsive > .table-default {
+  border: 1px solid #ddd;
+}
+
+#text {
+	padding-top: 10px;
+	padding-left: 30px;
+}
+#combo {
+	padding-top: 15px;
+	padding-left: 20px;
+}
+
+#applybtn {
+	width: 100px;
+
+}
+#head{
+	padding-top: 1px;
+}
+
