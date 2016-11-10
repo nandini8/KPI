@@ -23,32 +23,29 @@ creating grids -->
 		<meta  name="viewport" content="width=device-width, initial-scale=1.0">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="{% static 'KPI/css/KPI.css' %}">
-		
 		<div class="container">
-			<div class="panel panel-primary">
-			  <div class="panel-heading ">
-			  	<div class="col-md-6 " >
-					<h4>Key Performance Indicator</h4>
-				</div>
-				<div class="col-md-6 text-right">
-					<h4 >Status Indicator</h4>
-				</div>
-
-			  </div>
+			<div class = "col-md-6">
+				<h4>Key Performance Indicators</h4>
+			</div>
+			<div class = "col-md-6 text-right">
+				<h5>Status Indicators:</h5>
+			</div>
 		</div>
+		
 
 
 	</head>
 	<body>
+
 <div class="container">
 		<div class="panel panel-primary">
 		  <div class="panel-heading ">
 		  	<div class="col-md-12">
 				<ul class="nav nav-tabs">
 				  <li role="presentation" class="active"><a href="">Executive Summary</a></li>
-				  <li role="presentation"><a href="">Annual Key Metrics</a></li>
-				  <li role="presentation"><a href="">Semester Specific</a></li>
-				  <li role="presentation"><a href="">Student Specific</a></li>
+				  <li role="presentation"><a href="">Annual Key Metrics: Trends</a></li>
+				  <li role="presentation"><a href="">TAB 4</a></li>
+				  <li role="presentation"><a href="">TAB 5</a></li>
 				</ul>
 			</div>
 		  </div>
@@ -138,7 +135,7 @@ creating grids -->
 					  </div>
 				  </div>
 				  <div class="col-md-2">
-				  	<a href="#" id = "applybtn" class="btn btn-primary">Apply</a>
+				  	<a href="#" id = "applybtn" class="btn btn-warning">Apply</a>
 				  </div>
 
 			</div>
@@ -153,32 +150,25 @@ creating grids -->
 		<div class="row text-center">
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 				<div class="panel panel-primary">
-					<div class="panel panel-heading"><b>Batch Acceptance Rate</b></div>
+					<div class="panel panel-heading"><b>Annual Summary</b></div>
 					<div class="panel panel-body table-responsive">
 						<table class="table table-default table-hover table-default table-striped">
 							<th></th>
-							<th>Biologics DS</th>
-							<th>Bioogics DP</th>
-							<th>Small Molecules DS</th>
-							<th>Small Molecules DP</th>
-							<th>Combined</th>
+							<th>Sem I</th>
+							<th>Sem II</th>
+							<th>Sem III</th>
+							<th>Sem IV</th>
+							<th>Sem V</th>
+							<th>Sem VI</th>
 							
 								<tr>
-									<td><b>Released Loads</b></td>
-									<td>515</td>
-									<td>9133</td>
-									<td>681</td>
-									<td>4430</td>
-									<td>14759</td>
+									<td><b>Degree</b></td>
+									
 								</tr>
 
 								<tr>
-									<td><b>Total Loads</b></td>
-									<td>522</td>
-									<td>9159</td>
-									<td>685</td>
-									<td>4439</td>
-									<td>14805</td>
+									<td><b>BCA</b></td>
+									
 								</tr>
 							
 							
@@ -189,7 +179,7 @@ creating grids -->
 
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 				<div class="panel panel-primary">
-					<div class="panel panel-heading"><b>Internal Audits</b></div>
+					<div class="panel panel-heading"><b>Absence</b></div>
 					<div class="panel panel-body table-responsive">
 						<table class=" table table-hover table-default table-striped">
 							<th>For Cause</th>
@@ -215,6 +205,6 @@ creating grids -->
 <div class="container">
 		<script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	</body>	
 </html>

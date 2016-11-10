@@ -21,6 +21,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^rango/', include('rango.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_DIR) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^KPI/', include('rango.urls')),
+]
 
+if settings.DEBUG:
+	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_DIR)
+	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

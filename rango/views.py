@@ -1,11 +1,12 @@
 from django.shortcuts import render, render_to_response
-from django.http import HttpResponse
-from rango.models import Category, Page, MetricData, Metrics, Dimension
+from django.http import HttpResponse, HttpResponseRedirect
+from rango.models import Category, Page, MetricData, Metrics, Dimension, Company
+from rango.forms import Companyform, Metricsform
 from graphos.sources.model import ModelDataSource
 from graphos.renderers import gchart
 import ExamReports
 import json
-
+from django.core.context_processors import csrf
 
 
 
@@ -66,5 +67,34 @@ def chart(request):
 	return render_to_response('rango/chart.html', {'list': js_data})
 
 
+def company(request):
+	if request.method == 'POST':
+		form = Companyform(request.POST, request.FILES)
+		if form.is_valid():
+			form.save()
+			return HttpResponse('Data Saved')
 
+	else:
+		form = Companyform()
 
+	args = {}
+	args.update(csrf(request))
+	args['form'] = form
+
+	return render_to_response('KPI/company.html',args)
+
+def metric(request):
+	if request.method == 'POST':
+		form = Metricsform(request.POST, request.FILES)
+		if form.is_valid():
+			form.save()
+			return HttpResponse('/KPI/metric.html')
+
+	else:
+		form = Companyform()
+
+	args = {}
+	args.update(csrf(request))
+	args['form'] = form
+
+	return render_to_response('KPI/metrics.html',args)

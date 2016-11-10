@@ -1,6 +1,8 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils import timezone
+from django.conf import settings
+
 #updating for KPI project
 #Thank you for you comment
 # Create your models here.
@@ -71,6 +73,9 @@ class MetricData(models.Model):
 	def __str__(self):
 		return self.attr_1
 
+class Company(models.Model): 
+	company_name = models.CharField(max_length=100, blank=False)
+	company_logo = models.ImageField(upload_to = settings.MEDIA_ROOT ,blank=False)
 
-
-
+	def __str__(self):
+		return self.company_name

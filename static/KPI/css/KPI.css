@@ -18,12 +18,13 @@ a {
 }
 
 #text {
-	padding-top: 10px;
+	padding-top: 5px;
 	padding-left: 30px;
 }
 #combo {
-	padding-top: 15px;
+	padding-top: 10px;
 	padding-left: 20px;
+
 }
 
 #applybtn {
@@ -33,4 +34,12 @@ a {
 #head{
 	padding-top: 1px;
 }
+
+.btn-default  {
+	border-color: #F39C12;
+	color: #F39C12;
+	width: 150px
+}
+
+
 

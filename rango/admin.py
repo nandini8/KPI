@@ -1,5 +1,5 @@
 from django.contrib import admin
-from rango.models import Category, Page, Dimension, MetricData, Metrics
+from rango.models import Category, Page, Dimension, MetricData, Metrics, Company
 
 # Register your models here.
 
@@ -16,3 +16,4 @@ admin.site.register(Page, PageAdmin)
 admin.site.register(Dimension)
 admin.site.register(MetricData)
 admin.site.register(Metrics)
+admin.site.register(Company)
